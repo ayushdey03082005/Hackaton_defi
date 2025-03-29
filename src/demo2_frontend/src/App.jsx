@@ -1,30 +1,36 @@
-import { useState } from 'react';
-import { demo2_backend } from 'declarations/demo2_backend';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import './App.css';
+import LandingPage from './components/LandingPage';
+import LendingPage from './components/LendingPage';
+import BorrowingPage from './components/BorrowingPage';
+import Dashboard from './components/Dashboard';
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    demo2_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+  
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1>Loan dApp</h1>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/lend">Lend</Link></li>
+              <li><Link to="/borrow">Borrow</Link></li>
+              <li><Link to="/dashboard">Dashboard</Link></li>
+            </ul>
+          </nav>
+          <button className="connect-wallet">Connect Wallet</button>
+        </header>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/lend" element={<LendingPage />} />
+          <Route path="/borrow" element={<BorrowingPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

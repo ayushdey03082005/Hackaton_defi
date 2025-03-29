@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-header h1 {
+  margin: 0;
+}
+
+.App-header nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.App-header nav ul li {
+  margin: 0 10px;
+}
+
+.App-header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.connect-wallet {
+  background-color: #61dafb;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.landing-page,
+.lending-page,
+.borrowing-page,
+.dashboard {
+  padding: 20px;
+}
+
+.overview-panel,
+.quick-actions,
+.deposit-withdraw-panel,
+.repayment-section,
+.active-loans-summary,
+.transaction-history {
+  margin: 20px 0;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #61dafb;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.estimated-earnings,
+.repayment-section {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.repayment-section h3,
+.active-loans-summary h3,
+.transaction-history h3 {
+  margin-top: 0;
+}
+
+.transaction-history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-history ul li {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
