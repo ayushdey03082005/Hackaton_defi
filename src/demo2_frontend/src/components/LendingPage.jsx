@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+
+import { useState } from "react";
 
 const LendingPage = () => {
   const [asset, setAsset] = useState('ICP');

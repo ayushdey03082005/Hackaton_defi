@@ -1,13 +1,34 @@
-import React from 'react';
+// import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import LandingPage from './components/LandingPage';
 import LendingPage from './components/LendingPage';
 import BorrowingPage from './components/BorrowingPage';
 import Dashboard from './components/Dashboard';
+import { useAuth } from './StateManagement/useContext/useClient';
+import { ConnectWallet } from "@nfid/identitykit/react";
 
-function App() {
+const ConnectBtn = ({ onClick }) => (
+  <button className="connect-wallet" onClick={onClick}>Connect Wallet</button>
+  // <button
+  //   onClick={onClick}
+  //   className=" bg-white"
+  // >
+  //   <div className=" w-full h-full  rounded-xl flex items-center justify-center  ">
+  //     Connect Wallet
+  //   </div>
+  // </button>
   
+);
+function App() {
+
+  const { isAuthenticated,  principal , user, actor } = useAuth();
+  console.log(actor ,"XYZ");
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log("submitHandler");
+    actor.pay_back_loan();
+  }
   return (
     <Router>
       <div className="App">
@@ -21,7 +42,21 @@ function App() {
               <li><Link to="/dashboard">Dashboard</Link></li>
             </ul>
           </nav>
-          <button className="connect-wallet">Connect Wallet</button>
+          
+          {!isAuthenticated && (
+          <div className="hidden font-posterama md:block">
+            <ConnectWallet
+              connectButtonComponent={ConnectBtn}
+              className="rounded-full bg-black"
+            />
+          </div>
+        )}
+        {isAuthenticated && (
+          <div className="hidden font-posterama md:block">
+            <p className="text-white">Connected as: {user?.principal?.toText()}
+          </p>
+          </div>
+        )}
         </header>
         <Routes>
           <Route path="/" element={<LandingPage />} />

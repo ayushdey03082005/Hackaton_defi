@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+
+import { useState } from "react";
+
 
 const BorrowingPage = () => {
   const [amount, setAmount] = useState(0);

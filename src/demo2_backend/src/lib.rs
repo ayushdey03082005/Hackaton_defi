@@ -1,4 +1,5 @@
 use candid::{CandidType, Deserialize};
+use ic_cdk::export_candid;
 use ic_cdk_macros::{init, query, update};
 use std::collections::HashMap;
 
@@ -94,3 +95,5 @@ fn pay_back_loan(borrower: String) -> Result<(), String> {
 fn get_loan(borrower: String) -> Option<Loan> {
     LOANS.with(|loans| loans.borrow().get(&borrower).cloned())
 }
+
+export_candid!();

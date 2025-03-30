@@ -17,4 +17,4 @@ ciborium = "0.2"
 futures-util = "0.3"
 ic-cdk-macros = "0.17.1"
 serde_json = "1.0"
-getrandom = { version = "0.2", features = ["js"] }
+candid-extractor = "0.1.6"

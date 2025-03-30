@@ -1,3 +1,15 @@
-service : {
-    "greet": (text) -> (text) query;
+type Loan = record {
+  status : LoanStatus;
+  collateral : nat64;
+  borrower : text;
+  lender : text;
+  amount : nat64;
+};
+type LoanStatus = variant { PaidBack; Funded; Requested };
+type Result = variant { Ok; Err : text };
+service : () -> {
+  fund_loan : (text, text) -> (Result);
+  get_loan : (text) -> (opt Loan) query;
+  pay_back_loan : (text) -> (Result);
+  request_loan : (text, nat64, nat64) -> (Result);
 }
